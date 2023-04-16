@@ -1,0 +1,11 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@redwoodjs/api": "4.5.0",
+    "@redwoodjs/auth-dbauth-api": "4.5.0",
+    "@redwoodjs/graphql-server": "4.5.0",
+    "better-fs": "^11.0.4"
+  }
+}
