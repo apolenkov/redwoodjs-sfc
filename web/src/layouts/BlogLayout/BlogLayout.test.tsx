@@ -1,6 +1,6 @@
-import { render } from '@redwoodjs/testing/web'
+import { render } from '@redwoodjs/testing/web';
 
-import BlogLayout from './BlogLayout'
+import BlogLayout from './BlogLayout';
 
 //   Improve this test with help from the Redwood Testing Doc:
 //   https://redwoodjs.com/docs/testing#testing-pages-layouts
@@ -8,7 +8,7 @@ import BlogLayout from './BlogLayout'
 describe('BlogLayout', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<BlogLayout />)
-    }).not.toThrow()
-  })
-})
+      render(<BlogLayout />);
+    }).not.toThrow();
+  });
+});

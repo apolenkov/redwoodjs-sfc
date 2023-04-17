@@ -1,9 +1,9 @@
-import type { ArticlesQuery } from 'types/graphql'
+import type { ArticlesQuery } from 'types/graphql';
 
-import { Link, routes } from '@redwoodjs/router'
-import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+import { Link, routes } from '@redwoodjs/router';
+import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web';
 
-import Article from 'src/components/Article'
+import Article from 'src/components/Article';
 
 export const QUERY = gql`
   query ArticlesQuery {
@@ -14,15 +14,15 @@ export const QUERY = gql`
       createdAt
     }
   }
-`
+`;
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <div>Loading...</div>;
 
-export const Empty = () => <div>Empty</div>
+export const Empty = () => <div>Empty</div>;
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div>Error: {error?.message}</div>
-)
+);
 
 export const Success = ({ articles }: CellSuccessProps<ArticlesQuery>) => {
   return (
@@ -31,5 +31,5 @@ export const Success = ({ articles }: CellSuccessProps<ArticlesQuery>) => {
         <Article article={article} key={article.id} />
       ))}
     </div>
-  )
-}
+  );
+};

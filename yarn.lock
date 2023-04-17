@@ -12059,7 +12059,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:8.8.0":
+"eslint-config-prettier@npm:8.8.0, eslint-config-prettier@npm:^8.8.0":
   version: 8.8.0
   resolution: "eslint-config-prettier@npm:8.8.0"
   peerDependencies:
@@ -21184,6 +21184,7 @@ __metadata:
   dependencies:
     "@redwoodjs/auth-dbauth-setup": 4.5.0
     "@redwoodjs/core": 4.5.0
+    eslint-config-prettier: ^8.8.0
     prettier-plugin-tailwindcss: ^0.2.7
   languageName: unknown
   linkType: soft

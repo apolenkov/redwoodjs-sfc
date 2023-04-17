@@ -1,12 +1,12 @@
-import type { ComponentMeta } from '@storybook/react'
+import type { ComponentMeta } from '@storybook/react';
 
-import AboutPage from './AboutPage'
+import AboutPage from './AboutPage';
 
 export const generated = () => {
-  return <AboutPage />
-}
+  return <AboutPage />;
+};
 
 export default {
   title: 'Pages/AboutPage',
   component: AboutPage,
-} as ComponentMeta<typeof AboutPage>
+} as ComponentMeta<typeof AboutPage>;

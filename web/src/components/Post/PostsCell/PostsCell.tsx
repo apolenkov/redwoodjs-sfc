@@ -1,9 +1,9 @@
-import type { FindPosts } from 'types/graphql'
+import type { FindPosts } from 'types/graphql';
 
-import { Link, routes } from '@redwoodjs/router'
-import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
+import { Link, routes } from '@redwoodjs/router';
+import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web';
 
-import Posts from 'src/components/Post/Posts'
+import Posts from 'src/components/Post/Posts';
 
 export const QUERY = gql`
   query FindPosts {
@@ -14,9 +14,9 @@ export const QUERY = gql`
       createdAt
     }
   }
-`
+`;
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <div>Loading...</div>;
 
 export const Empty = () => {
   return (
@@ -26,13 +26,13 @@ export const Empty = () => {
         {'Create one?'}
       </Link>
     </div>
-  )
-}
+  );
+};
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div className="rw-cell-error">{error?.message}</div>
-)
+);
 
 export const Success = ({ posts }: CellSuccessProps<FindPosts>) => {
-  return <Posts posts={posts} />
-}
+  return <Posts posts={posts} />;
+};

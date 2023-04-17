@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { useEffect } from 'react'
+import { useRef } from 'react';
+import { useEffect } from 'react';
 
 import {
   Form,
@@ -8,49 +8,49 @@ import {
   PasswordField,
   FieldError,
   Submit,
-} from '@redwoodjs/forms'
-import { Link, navigate, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
-import { toast, Toaster } from '@redwoodjs/web/toast'
+} from '@redwoodjs/forms';
+import { Link, navigate, routes } from '@redwoodjs/router';
+import { MetaTags } from '@redwoodjs/web';
+import { toast, Toaster } from '@redwoodjs/web/toast';
 
-import { useAuth } from 'src/auth'
+import { useAuth } from 'src/auth';
 
 const SignupPage = () => {
-  const { isAuthenticated, signUp } = useAuth()
+  const { isAuthenticated, signUp } = useAuth();
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(routes.home())
+      navigate(routes.home());
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated]);
 
   // focus on username box on page load
-  const usernameRef = useRef<HTMLInputElement>(null)
+  const usernameRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    usernameRef.current?.focus()
-  }, [])
+    usernameRef.current?.focus();
+  }, []);
 
   const onSubmit = async (data: Record<string, string>) => {
     const response = await signUp({
       username: data.username,
       password: data.password,
-    })
+    });
 
     if (response.message) {
-      toast(response.message)
+      toast(response.message);
     } else if (response.error) {
-      toast.error(response.error)
+      toast.error(response.error);
     } else {
       // user is signed in automatically
-      toast.success('Welcome!')
+      toast.success('Welcome!');
     }
-  }
+  };
 
   return (
     <>
       <MetaTags title="Signup" />
 
-      <main className="rw-main w-96 mx-auto mt-12">
+      <main className="rw-main mx-auto mt-12 w-96">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
         <div className="rw-scaffold rw-login-container">
           <div className="rw-segment">
@@ -121,7 +121,7 @@ const SignupPage = () => {
         </div>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default SignupPage
+export default SignupPage;

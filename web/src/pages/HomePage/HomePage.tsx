@@ -1,6 +1,6 @@
-import { MetaTags } from '@redwoodjs/web'
+import { MetaTags } from '@redwoodjs/web';
 
-import ArticlesCell from 'src/components/ArticlesCell'
+import ArticlesCell from 'src/components/ArticlesCell';
 
 const HomePage = () => {
   return (
@@ -8,7 +8,7 @@ const HomePage = () => {
       <MetaTags title="Home" description="Home page" />
       <ArticlesCell />
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

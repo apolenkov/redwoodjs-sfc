@@ -1,11 +1,11 @@
-import type { EditPostById, UpdatePostInput } from 'types/graphql'
+import type { EditPostById, UpdatePostInput } from 'types/graphql';
 
-import { navigate, routes } from '@redwoodjs/router'
-import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
-import { useMutation } from '@redwoodjs/web'
-import { toast } from '@redwoodjs/web/toast'
+import { navigate, routes } from '@redwoodjs/router';
+import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web';
+import { useMutation } from '@redwoodjs/web';
+import { toast } from '@redwoodjs/web/toast';
 
-import PostForm from 'src/components/Post/PostForm'
+import PostForm from 'src/components/Post/PostForm';
 
 export const QUERY = gql`
   query EditPostById($id: Int!) {
@@ -16,7 +16,7 @@ export const QUERY = gql`
       createdAt
     }
   }
-`
+`;
 const UPDATE_POST_MUTATION = gql`
   mutation UpdatePostMutation($id: Int!, $input: UpdatePostInput!) {
     updatePost(id: $id, input: $input) {
@@ -26,28 +26,28 @@ const UPDATE_POST_MUTATION = gql`
       createdAt
     }
   }
-`
+`;
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => <div>Loading...</div>;
 
 export const Failure = ({ error }: CellFailureProps) => (
   <div className="rw-cell-error">{error?.message}</div>
-)
+);
 
 export const Success = ({ post }: CellSuccessProps<EditPostById>) => {
   const [updatePost, { loading, error }] = useMutation(UPDATE_POST_MUTATION, {
     onCompleted: () => {
-      toast.success('Post updated')
-      navigate(routes.posts())
+      toast.success('Post updated');
+      navigate(routes.posts());
     },
     onError: (error) => {
-      toast.error(error.message)
+      toast.error(error.message);
     },
-  })
+  });
 
   const onSave = (input: UpdatePostInput, id: EditPostById['post']['id']) => {
-    updatePost({ variables: { id, input } })
-  }
+    updatePost({ variables: { id, input } });
+  };
 
   return (
     <div className="rw-segment">
@@ -60,5 +60,5 @@ export const Success = ({ post }: CellSuccessProps<EditPostById>) => {
         <PostForm post={post} onSave={onSave} error={error} loading={loading} />
       </div>
     </div>
-  )
-}
+  );
+};

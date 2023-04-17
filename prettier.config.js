@@ -4,17 +4,17 @@ module.exports = {
   trailingComma: 'es5',
   bracketSpacing: true,
   tabWidth: 2,
-  semi: false,
+  semi: true,
   singleQuote: true,
   arrowParens: 'always',
   overrides: [
     {
       files: 'Routes.*',
       options: {
-        printWidth: 999,
+        printWidth: 200,
       },
     },
   ],
   tailwindConfig: './web/config/tailwind.config.js',
   plugins: [require('prettier-plugin-tailwindcss')],
-}
+};

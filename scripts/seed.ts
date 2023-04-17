@@ -1,7 +1,7 @@
-import type { Prisma } from '@prisma/client'
-import { db } from 'api/src/lib/db'
+import type { Prisma } from '@prisma/client';
+import { db } from 'api/src/lib/db';
 
-import { hashPassword } from '@redwoodjs/auth-dbauth-api'
+import { hashPassword } from '@redwoodjs/auth-dbauth-api';
 
 export default async () => {
   try {
@@ -24,24 +24,24 @@ export default async () => {
         title: 'What is the meaning of life?',
         body: 'Meh waistcoat succulents umami asymmetrical, hoodie post-ironic paleo chillwave tote bag. Trust fund kitsch waistcoat vape, cray offal gochujang food truck cloud bread enamel pin forage. Roof party chambray ugh occupy fam stumptown. Dreamcatcher tousled snackwave, typewriter lyft unicorn pabst portland blue bottle locavore squid PBR&B tattooed.',
       },
-    ]
+    ];
     console.log(
       "\nUsing the default './scripts/seed.{js,ts}' template\nEdit the file to add seed data\n"
-    )
+    );
 
     // Note: if using PostgreSQL, using `createMany` to insert multiple records is much faster
     // @see: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#createmany
     Promise.all(
       data.map(async (data: Prisma.PostCreateArgs['data']) => {
-        const record = await db.post.create({ data })
-        console.log(record)
+        const record = await db.post.create({ data });
+        console.log(record);
       })
-    )
+    );
 
     // If using dbAuth and seeding users, you'll need to add a `hashedPassword`
     // and associated `salt` to their record. Here's how to create them using
     // the same algorithm that dbAuth uses internally:
-    const [hashedPassword, salt] = hashPassword('admin')
+    const [hashedPassword, salt] = hashPassword('admin');
     await db.user.create({
       data: {
         id: 1,
@@ -50,9 +50,9 @@ export default async () => {
         hashedPassword,
         salt,
       },
-    })
+    });
   } catch (error) {
-    console.warn('Please define your seed data.')
-    console.error(error)
+    console.warn('Please define your seed data.');
+    console.error(error);
   }
-}
+};

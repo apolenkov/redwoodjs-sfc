@@ -1,9 +1,9 @@
-import { MetaTags } from '@redwoodjs/web'
+import { MetaTags } from '@redwoodjs/web';
 
-import ArticleCell from 'src/components/ArticleCell'
+import ArticleCell from 'src/components/ArticleCell';
 
 interface Props {
-  id: number
+  id: number;
 }
 
 const ArticlePage = ({ id }: Props) => {
@@ -13,7 +13,7 @@ const ArticlePage = ({ id }: Props) => {
 
       <ArticleCell id={id} />
     </>
-  )
-}
+  );
+};
 
-export default ArticlePage
+export default ArticlePage;

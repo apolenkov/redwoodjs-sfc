@@ -1,9 +1,9 @@
-import { Private, Router, Route, Set } from '@redwoodjs/router'
+import { Private, Router, Route, Set } from '@redwoodjs/router';
 
-import BlogLayout from 'src/layouts/BlogLayout'
-import ScaffoldLayout from 'src/layouts/ScaffoldLayout'
+import BlogLayout from 'src/layouts/BlogLayout';
+import ScaffoldLayout from 'src/layouts/ScaffoldLayout';
 
-import { useAuth } from './auth'
+import { useAuth } from './auth';
 
 const Routes = () => {
   return (
@@ -28,7 +28,7 @@ const Routes = () => {
       </Set>
       <Route notfound page={NotFoundPage} />
     </Router>
-  )
-}
+  );
+};
 
-export default Routes
+export default Routes;

@@ -1,6 +1,6 @@
-import { render } from '@redwoodjs/testing/web'
+import { render } from '@redwoodjs/testing/web';
 
-import ArticlePage from './ArticlePage'
+import ArticlePage from './ArticlePage';
 
 //   Improve this test with help from the Redwood Testing Doc:
 //   https://redwoodjs.com/docs/testing#testing-pages-layouts
@@ -8,7 +8,7 @@ import ArticlePage from './ArticlePage'
 describe('ArticlePage', () => {
   it('renders successfully', () => {
     expect(() => {
-      render(<ArticlePage id={1} />)
-    }).not.toThrow()
-  })
-})
+      render(<ArticlePage id={1} />);
+    }).not.toThrow();
+  });
+});
