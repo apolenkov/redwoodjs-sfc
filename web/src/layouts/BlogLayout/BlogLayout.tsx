@@ -1,4 +1,5 @@
 import { Link, routes } from '@redwoodjs/router';
+import { Toaster } from '@redwoodjs/web/toast';
 
 import { useAuth } from 'src/auth';
 
@@ -7,10 +8,11 @@ type BlogLayoutProps = {
 };
 
 const BlogLayout = ({ children }: BlogLayoutProps) => {
-  const { isAuthenticated, currentUser, logOut } = useAuth();
+  const { logOut, isAuthenticated, currentUser } = useAuth();
 
   return (
     <>
+      <Toaster />
       <header className="relative flex items-center justify-between bg-blue-700 px-8 py-4 text-white">
         <h1 className="text-5xl font-semibold tracking-tight">
           <Link
