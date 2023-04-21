@@ -16,7 +16,7 @@ export const failure: ComponentStory<typeof Failure> = (args) => {
 };
 
 export const success: ComponentStory<typeof Success> = (args) => {
-  return Success ? <Success {...standard()} {...args} /> : <></>;
+  return Success ? <Success {...standard({ postId: 1 })} {...args} /> : <></>;
 };
 
 export default { title: 'Cells/CommentsCell' };

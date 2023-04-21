@@ -6,7 +6,7 @@ import type {
 
 import CommentForm from './CommentForm';
 
-export const generated = () => {
+export const generated = ({ postId }) => {
   mockGraphQLMutation<CreateCommentMutation, CreateCommentMutationVariables>(
     'CreateCommentMutation',
     (variables, { ctx }) => {
@@ -24,7 +24,7 @@ export const generated = () => {
     }
   );
 
-  return <CommentForm />;
+  return <CommentForm postId={postId} />;
 };
 
 export default {

@@ -9,6 +9,13 @@ const ARTICLE = {
   title: 'First post',
   body: `Neutra tacos hot chicken prism raw denim, put a bird on it enamel pin post-ironic vape cred DIY. Street art next level umami squid. Hammock hexagon glossier 8-bit banjo. Neutra la croix mixtape echo park four loko semiotics kitsch forage chambray. Semiotics salvia selfies jianbing hella shaman. Letterpress helvetica vaporware cronut, shaman butcher YOLO poke fixie hoodie gentrify woke heirloom.`,
   createdAt: new Date().toISOString(),
+  user: {
+    id: 1,
+    name: 'Jon Par',
+    roles: 'user',
+    posts: [],
+    email: 'user@user.com',
+  },
 };
 
 describe('Article', () => {
@@ -20,7 +27,7 @@ describe('Article', () => {
   });
 
   it('renders comments when displaying a full blog post', async () => {
-    const comment = standard().comments[0];
+    const comment = standard({ postId: 1 }).comments[0];
     render(<Article article={ARTICLE} />);
 
     await waitFor(() =>
@@ -40,7 +47,7 @@ describe('Article', () => {
   });
 
   it('does not render comments when displaying a summary', async () => {
-    const comment = standard().comments[0];
+    const comment = standard({ postId: 1 }).comments[0];
     render(<Article article={ARTICLE} summary={true} />);
 
     await waitFor(() =>
