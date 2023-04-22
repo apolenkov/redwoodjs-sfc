@@ -12,7 +12,7 @@ export const standard = defineScenario<
         email: 'moderator@moderator.com',
         roles: 'moderator',
         hashedPassword: 'String',
-        salt: 'String'
+        salt: 'String',
       },
     },
   },
