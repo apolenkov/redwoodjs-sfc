@@ -32,7 +32,7 @@ export const standard = defineScenario<
         body: 'I like trees',
         post: {
           create: {
-            title: 'Redwood Leaves',
+            title: 'Some leaves',
             body: 'The quick brown fox jumped over the lazy dog.',
             userId: 1,
           },
