@@ -1,10 +1,16 @@
 ## Setup
 
+To start application
 ```bash
-git clone https://github.com/apolenkov/simpleflashcards
-cd dir
-yarn install
-yarn rw prisma migrate dev
-yarn rw prisma db seed
-yarn rw dev
+docker-compose up web
+```
+
+To seed data after web
+```bash
+docker-compose up seed
+```
+
+To start test
+```bash
+docker-compose up test
 ```

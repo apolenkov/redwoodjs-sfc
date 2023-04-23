@@ -1,0 +1,111 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: development_db
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - sfcards
+  web:
+    image: sfcards-web
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile
+      tags:
+        - sfcards-web:latest
+    depends_on:
+      - api
+    ports:
+      - '8910:8910'
+    expose:
+      - 8910
+    environment:
+      - API_HOST=http://api:8911
+      - PORT=8910
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/development_db
+    volumes:
+      - /app/node_moduleDDs
+      - /app/.yarn/cache
+    networks:
+      - sfcards
+  api:
+    image: sfcards-api
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+      tags:
+        - sfcards-api:latest
+    depends_on:
+      - db
+    expose:
+      - 8911
+    ports:
+      - '8911:8911'
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/development_db
+    volumes:
+      - /app/node_modules
+      - /app/.yarn/cache
+    networks:
+      - sfcards
+  seed:
+    image: sfcards-cli
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      tags:
+        - sfcards-cli:latest
+    command: [ "yarn", "rw", "prisma", "db", "seed" ]
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/development_db
+    volumes:
+      - /app/node_modules
+      - /app/.yarn/cache
+    networks:
+      - sfcards
+
+  test-db:
+    image: postgres:latest
+    volumes:
+      - postgres-test-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: test_db
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - sfcards
+  test:
+    image: sfcards-cli
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      tags:
+        - sfcards-api:latest
+    command: ["yarn", "rw", "test"]
+    depends_on:
+      - test-db
+    environment:
+      - TEST_DATABASE_URL=postgresql://postgres:postgres@test-db:5432/test_db
+      - CI=true
+    volumes:
+      - ".:/app"
+      - /app/node_modules
+      - /app/.yarn/cache
+    networks:
+      - sfcards
+
+volumes:
+  postgres-data:
+  postgres-test-data:
+
+networks:
+  sfcards:
+    name: sfcards-network
+
