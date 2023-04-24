@@ -15,7 +15,7 @@ const DELETE = gql`
 
 const formattedDate = (datetime: ConstructorParameters<typeof Date>[0]) => {
   const parsedDate = new Date(datetime);
-  const month = parsedDate.toLocaleString('default', { month: 'long' });
+  const month = parsedDate.toLocaleString('en-US', { month: 'long' });
   return `${parsedDate.getDate()} ${month} ${parsedDate.getFullYear()}`;
 };
 
